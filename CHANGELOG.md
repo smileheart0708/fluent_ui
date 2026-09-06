@@ -5,6 +5,8 @@
 - fix: `ComboBox` dropdown now matches WinUI 3 metrics
   The dropdown opens with a plain fade (250ms in, 167ms out) instead of the three-stage expand animation; items are fixed at 32 with a focused-item selection pill that scales on press; the popup honors an 80 minimum width and the button a 64 minimum width with a fixed 38 glyph column.
 
+- fix: `TabView` now keys each body page (and strip entry) on the caller-provided `Tab.key` when available, falling back to tab identity. This keeps each tab's body (and its state) attached to its tab both across reorders and across rebuilds that construct fresh `Tab` widgets — the standard Flutter pattern — instead of tearing the visible body down on every rebuild
+
 ## 4.16.1
 
 - fix: `ComboBox` no longer throws when opening a dropdown with a single item ([#1347](https://github.com/bdlukaa/fluent_ui/pull/1347))
