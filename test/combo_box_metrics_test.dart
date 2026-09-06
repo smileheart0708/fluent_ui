@@ -54,6 +54,19 @@ void main() {
     );
   });
 
+  testWidgets('ComboBox shrinks its glyph column instead of overflowing when squeezed', (
+    tester,
+  ) async {
+    // Navigation pane expand animations squeeze the combo below its intrinsic
+    // minimum width; the button must clip its glyph column instead of
+    // reporting a RenderFlex overflow.
+    await tester.pumpWidget(_wrap(SizedBox(width: 56, child: _combo(isExpanded: true))));
+    expect(tester.takeException(), isNull);
+
+    await tester.pumpWidget(_wrap(SizedBox(width: 56, child: _combo())));
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets('ComboBox keeps WinUI default metrics under compact density', (
     tester,
   ) async {

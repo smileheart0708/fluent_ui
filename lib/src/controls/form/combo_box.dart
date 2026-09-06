@@ -1326,20 +1326,24 @@ class ComboBoxState<T> extends State<ComboBox<T>> {
                   innerItemsWidget,
                 // WinUI 3 template: a fixed 38px glyph column, with the
                 // 12x12 chevron right-aligned and a 14px end margin.
-                SizedBox(
-                  width: _kComboBoxGlyphColumnWidth,
-                  child: IconTheme.merge(
-                    data: IconThemeData(
-                      color: _iconColor(context),
-                      size: widget.iconSize,
-                    ),
-                    child: Align(
-                      alignment: AlignmentDirectional.centerEnd,
-                      child: Padding(
-                        padding: const EdgeInsetsDirectional.only(
-                          end: _kComboBoxGlyphEndMargin,
+                // Flexible lets the column shrink instead of overflowing when
+                // the button is squeezed below its intrinsic minimum width.
+                Flexible(
+                  child: SizedBox(
+                    width: _kComboBoxGlyphColumnWidth,
+                    child: IconTheme.merge(
+                      data: IconThemeData(
+                        color: _iconColor(context),
+                        size: widget.iconSize,
+                      ),
+                      child: Align(
+                        alignment: AlignmentDirectional.centerEnd,
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.only(
+                            end: _kComboBoxGlyphEndMargin,
+                          ),
+                          child: widget.icon,
                         ),
-                        child: widget.icon,
                       ),
                     ),
                   ),
