@@ -1,3 +1,10 @@
+## [next]
+
+- feat: `ComboBox.maxDropDownHeight`
+  The dropdown is now never taller than this value (defaults to 504, matching the WinUI 3 `MaxDropDownHeight` default) or the available screen space, whichever is smaller.
+- fix: `ComboBox` dropdown now matches WinUI 3 metrics
+  The dropdown opens with a plain fade (250ms in, 167ms out) instead of the three-stage expand animation; items are fixed at 32 with a focused-item selection pill that scales on press; the popup honors an 80 minimum width and the button a 64 minimum width with a fixed 38 glyph column.
+
 ## 4.16.1
 
 - fix: `ComboBox` no longer throws when opening a dropdown with a single item ([#1347](https://github.com/bdlukaa/fluent_ui/pull/1347))
